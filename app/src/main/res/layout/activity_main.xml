@@ -19,8 +19,15 @@
 
 
     <Button
-        android:id="@+id/button"
-        android:text="请求"
+        android:id="@+id/syncButton"
+        android:text="同步请求"
+        app:layout_constraintBottom_toTopOf="@id/asyncButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/asyncButton"
+        android:text="异步请求"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
