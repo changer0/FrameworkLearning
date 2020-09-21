@@ -1,9 +1,6 @@
 package com.lulu.okhttp
 
-import android.util.Log
-import androidx.lifecycle.GenericLifecycleObserver
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
@@ -25,15 +22,14 @@ object CoroutineScopeManager {
             return scope
         }
         scope = CoroutineScope(Dispatchers.Main)
-        val observer: (source: LifecycleOwner, event: Lifecycle.Event) -> Unit = { source, event ->
-            Log.d(TAG, "lifecycle called with: source = $source, event = $event")
-            if (event == Lifecycle.Event.ON_DESTROY) {
+        lifecycle.addObserver(object : LifecycleObserver {
+            @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+            fun onDestroy() {
                 //当前 Activity 销毁了
                 scope.cancel()
                 scopeMap.remove(lifecycle)
             }
-        }
-        lifecycle.addObserver(GenericLifecycleObserver(observer))
+        })
         scopeMap[lifecycle] = scope
         return scope
     }
