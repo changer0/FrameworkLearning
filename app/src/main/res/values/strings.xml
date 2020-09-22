@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">OkHttpLearning</string>
+    <string name="app_name">FrameworkLearning</string>
+    <string name="activity_okhttp">OkHttpLearning</string>
+    <string name="activity_glide">GlideLearning</string>
 </resources>

@@ -3,7 +3,7 @@ package com.lulu.okhttp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_okhttp.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -14,13 +14,13 @@ import java.io.IOException
 import java.lang.StringBuilder
 import java.util.concurrent.TimeUnit
 
-private const val TAG = "MainActivity"
+private const val TAG = "OkHttpActivity"
 
-class MainActivity : AppCompatActivity() {
+class OkHttpActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_okhttp)
         syncButton.setOnClickListener {
             synRequest()
         }
